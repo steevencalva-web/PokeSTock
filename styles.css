@@ -674,7 +674,6 @@ body {
 .newsletter-section {
   background: linear-gradient(135deg, #4A0000 0%, #2a0000 100%);
   border-top: 3px solid var(--color-primary);
-  border-bottom: 3px solid var(--color-primary);
   padding: var(--spacing-xxl) var(--spacing-lg);
   color: white;
 }
@@ -1673,7 +1672,6 @@ body {
    ============================================= */
 .footer-legal {
   text-align: center;
-  border-top: 1px solid var(--color-border);
   padding-top: var(--spacing-md);
   margin-top: var(--spacing-md);
 }
