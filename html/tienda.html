@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/pokecoins.css">
 </head>
 <body>
   <!-- Header -->
@@ -27,6 +28,24 @@
         <ul class="nav-list">
           <li><a href="index.html#catalogo" class="nav-link nav-link-page">PRODUCTOS</a></li>
           <li><a href="tienda.html" class="nav-link nav-link-page active">TIENDA</a></li>
+          <li class="expansiones-wrapper">
+            <a href="#" class="nav-link expansiones-toggle">EXPANSIONES <span class="arrow">▾</span></a>
+            <div class="expansiones-dropdown" id="expansionesDropdown">
+              <div class="expansiones-col">
+                <h4>EXPANSIONES RECIENTES</h4>
+                <ul>
+                  <li><a href="heroes-ascendentes.html">Megaevolución – Héroes Ascendentes</a></li>
+                  <li><a href="index.html">Escarlata y Púrpura – Chispas Fulgurantes</a></li>
+                </ul>
+              </div>
+              <div class="expansiones-col">
+                <h4>EXPANSIONES ANTERIORES</h4>
+                <ul>
+                  <li><span class="exp-coming-soon">Próximamente</span></li>
+                </ul>
+              </div>
+            </div>
+          </li>
           <li><a href="index.html#novedades" class="nav-link nav-link-page">NOVEDADES</a></li>
           <li><a href="index.html#protagonistas" class="nav-link nav-link-page">PROTAGONISTAS</a></li>
         </ul>
@@ -59,6 +78,7 @@
         <button class="filter-btn" data-category="caja">Cajas</button>
         <button class="filter-btn" data-category="pack">Packs</button>
         <button class="filter-btn" data-category="sobre">Sobres</button>
+        <button class="filter-btn" data-category="colección">Colecciones</button>
       </div>
       <div class="shop-results-count" id="shopResultsCount"></div>
       <!-- Product Grid -->
@@ -233,10 +253,60 @@
     </div>
   </div>
 
+  <!-- PokeCoins FAB -->
+  <button class="pokecoins-fab" id="pokecoinsFab" title="PokeCoins">
+    <span class="fab-badge">0</span>
+  </button>
+
+  <!-- PokeCoins Panel Overlay -->
+  <div class="pokecoins-panel-overlay" id="pokecoinsPanelOverlay"></div>
+
+  <!-- PokeCoins Panel -->
+  <div class="pokecoins-panel" id="pokecoinsPanel">
+    <div class="pokecoins-panel-header">
+      <h2>🪙 PokeCoins</h2>
+      <button class="pokecoins-panel-close" id="pokecoinsPanelClose">✕</button>
+    </div>
+    <div class="pokecoins-panel-body">
+      <div class="pokecoins-balance">
+        <span class="balance-label">Tu saldo</span>
+        <span class="balance-amount">0</span>
+        <span class="balance-currency">PokeCoins</span>
+      </div>
+      <p class="pokecoins-earn-info">Gana <strong>10 PokeCoins</strong> por cada €1 de compra</p>
+      <h3 class="rewards-title">Canjear Descuentos</h3>
+      <div class="reward-card">
+        <div class="reward-info"><span class="reward-name">Descuento €1</span><span class="reward-cost">🪙 50</span></div>
+        <button class="reward-redeem-btn" data-amount="1" data-cost="50" disabled>CANJEAR</button>
+      </div>
+      <div class="reward-card">
+        <div class="reward-info"><span class="reward-name">Descuento €3</span><span class="reward-cost">🪙 120</span></div>
+        <button class="reward-redeem-btn" data-amount="3" data-cost="120" disabled>CANJEAR</button>
+      </div>
+      <div class="reward-card">
+        <div class="reward-info"><span class="reward-name">Descuento €5</span><span class="reward-cost">🪙 200</span></div>
+        <button class="reward-redeem-btn" data-amount="5" data-cost="200" disabled>CANJEAR</button>
+      </div>
+      <div class="reward-card">
+        <div class="reward-info"><span class="reward-name">Descuento €10</span><span class="reward-cost">🪙 350</span></div>
+        <button class="reward-redeem-btn" data-amount="10" data-cost="350" disabled>CANJEAR</button>
+      </div>
+      <h3 class="rewards-title">Mystery Box</h3>
+      <div class="reward-card mystery">
+        <div class="reward-info"><span class="reward-name">🎁 Mystery Box</span><span class="reward-cost">🪙 150</span></div>
+        <button class="mystery-buy-btn" id="mysteryBoxPanelBtn" data-cost="150" disabled>ABRIR MYSTERY BOX</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Opening Overlay -->
+  <div class="card-opening-overlay" id="cardOpeningOverlay"></div>
+
   <!-- Toast Notification -->
   <div class="toast-container" id="toastContainer"></div>
 
   <script src="../js/data.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/pokecoins.js"></script>
 </body>
 </html>

@@ -1,0 +1,790 @@
+/* =============================================
+   POKECOINS SYSTEM STYLES
+   ============================================= */
+
+/* --- Floating Pokeball Button --- */
+.pokecoins-fab {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 900;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: radial-gradient(circle at 50% 50%, #fff 28%, #333 30%, #333 34%, #ee1515 36%, #cc0000 100%);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45), inset 0 -2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokecoins-fab:hover {
+  transform: scale(1.12) rotate(15deg);
+  box-shadow: 0 6px 24px rgba(238,21,21,0.5);
+}
+
+.pokecoins-fab::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #333;
+  position: absolute;
+}
+
+.pokecoins-fab .fab-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ffcb05;
+  color: #1a0000;
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 2px 7px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* --- PokeCoins Panel (slides up from bottom-left) --- */
+.pokecoins-panel-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 950;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.pokecoins-panel-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.pokecoins-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 380px;
+  max-height: 85vh;
+  background: #1a0a2e;
+  border-radius: 16px 16px 0 0;
+  z-index: 960;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+  box-shadow: 0 -4px 30px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,203,5,0.2);
+}
+
+.pokecoins-panel.active {
+  transform: translateY(0);
+}
+
+.pokecoins-panel-header {
+  background: linear-gradient(135deg, #cc0000, #8b0000);
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pokecoins-panel-header h2 {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.pokecoins-panel-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.pokecoins-panel-body {
+  padding: 0 0 1.5rem;
+  overflow-y: auto;
+  max-height: calc(100% - 60px);
+}
+
+.pokecoins-balance {
+  text-align: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255,203,5,0.15);
+}
+
+.pokecoins-balance .balance-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pokecoins-balance .balance-amount {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffcb05;
+  font-family: 'Roboto', sans-serif;
+}
+
+.pokecoins-balance .balance-label {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
+}
+
+.pokecoins-balance .balance-currency {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.pokecoins-earn-info {
+  padding: 0.75rem 1.5rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(255,203,5,0.1);
+  text-align: center;
+}
+
+.pokecoins-earn-info strong {
+  color: #ffcb05;
+}
+
+.rewards-title {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  margin: 1rem 1.5rem 0.75rem;
+}
+
+.reward-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.reward-name {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.reward-cost {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+}
+
+.reward-card.mystery {
+  border-color: rgba(255,203,5,0.3);
+  background: rgba(255,203,5,0.08);
+}
+
+.pokecoins-info {
+  padding: 1rem 1.5rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(255,203,5,0.1);
+}
+
+.pokecoins-info strong {
+  color: #ffcb05;
+}
+
+/* --- Rewards Section --- */
+.pokecoins-rewards {
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+.pokecoins-rewards h3 {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.reward-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,203,5,0.15);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.3s;
+}
+
+.reward-card:hover {
+  border-color: rgba(255,203,5,0.4);
+}
+
+.reward-card-info h4 {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.reward-card-info p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+}
+
+.reward-redeem-btn {
+  background: linear-gradient(135deg, #ffcb05, #e8a000);
+  color: #1a0000;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.reward-redeem-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 12px rgba(255,203,5,0.4);
+}
+
+.reward-redeem-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Mystery Box Card in Shop --- */
+.mystery-box-card {
+  background: linear-gradient(135deg, #2a0a4a, #1a0a2e);
+  border: 2px solid rgba(255,203,5,0.3);
+  border-radius: var(--border-radius-lg, 12px);
+  overflow: hidden;
+  text-align: center;
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.mystery-box-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 32px rgba(255,203,5,0.3);
+  border-color: #ffcb05;
+}
+
+.mystery-box-card .mystery-icon {
+  font-size: 4rem;
+  margin-bottom: 0.75rem;
+  display: block;
+  animation: mysteryPulse 2s ease-in-out infinite;
+}
+
+@keyframes mysteryPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.mystery-box-card h3 {
+  color: #ffcb05;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.mystery-box-card p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.mystery-box-card .mystery-price {
+  color: #ffcb05;
+  font-weight: 900;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.mystery-buy-btn {
+  background: linear-gradient(135deg, #ffcb05, #e8a000);
+  color: #1a0000;
+  border: none;
+  border-radius: 25px;
+  padding: 0.65rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mystery-buy-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(255,203,5,0.4);
+}
+
+.mystery-buy-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Discount Badge in Cart --- */
+.cart-discount {
+  background: rgba(255,203,5,0.1);
+  border: 1px dashed #ffcb05;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+}
+
+.cart-discount span {
+  color: #ffcb05;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cart-discount-remove {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* =============================================
+   CARD OPENING ANIMATION SYSTEM
+   ============================================= */
+
+.card-opening-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.card-opening-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* --- Booster Pack --- */
+.booster-pack-container {
+  position: relative;
+  width: 220px;
+  height: 320px;
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.booster-pack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  transition: transform 0.3s;
+}
+
+.booster-pack:hover {
+  transform: scale(1.03);
+}
+
+.booster-pack-bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4a1a6b, #1a3a6b, #4a1a6b);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.booster-pack-bg .pack-title {
+  color: #ffcb05;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.booster-pack-bg .pack-subtitle {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.booster-pack-bg .pack-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Cut line (drag indicator) */
+.booster-cut-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.booster-pack-container.ready-to-cut .booster-cut-line {
+  background: repeating-linear-gradient(
+    90deg,
+    #ffcb05 0px,
+    #ffcb05 8px,
+    transparent 8px,
+    transparent 14px
+  );
+  animation: cutPulse 1s ease-in-out infinite;
+  height: 6px;
+}
+
+@keyframes cutPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.booster-cut-hint {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Tearing Animation --- */
+.booster-pack-container.tearing .booster-pack {
+  animation: tearOpen 0.8s ease forwards;
+}
+
+@keyframes tearOpen {
+  0% { 
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+  30% {
+    clip-path: inset(8% 0 0 0);
+    transform: scale(1.02);
+  }
+  60% {
+    clip-path: inset(30% 0 0 0);
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    clip-path: inset(100% 0 0 0);
+    transform: scale(1.1) rotate(5deg);
+    opacity: 0;
+  }
+}
+
+/* Tear particles */
+.tear-particle {
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  border-radius: 2px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* --- Card Reveal --- */
+.card-reveal-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.card-reveal-container.active {
+  display: flex;
+}
+
+.revealed-card {
+  width: 260px;
+  height: 365px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.revealed-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.revealed-card.flipping .revealed-card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+.card-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-back {
+  background: linear-gradient(135deg, #1a3a6b, #4a1a6b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back .back-design {
+  width: 80%;
+  height: 80%;
+  border: 3px solid rgba(255,203,5,0.3);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.card-back .back-icon {
+  font-size: 3rem;
+}
+
+.card-back .back-text {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.card-front {
+  transform: rotateY(180deg);
+}
+
+.card-front img {
+  border-radius: 12px;
+}
+
+/* Card enter animation */
+.revealed-card {
+  animation: cardSlideIn 0.5s ease;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Sparkle effect on rare cards */
+.revealed-card.rare .card-front::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255,215,0,0.15) 25%,
+    transparent 50%,
+    rgba(255,215,0,0.15) 75%,
+    transparent 100%
+  );
+  animation: shimmer 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  from { background-position: -200% -200%; }
+  to { background-position: 200% 200%; }
+}
+
+.card-counter {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.card-hint {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+  animation: fadeInUp 0.5s ease 0.3s both;
+}
+
+/* --- Close / Summary --- */
+.opening-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.opening-close-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.card-summary {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 700px;
+  width: 90%;
+}
+
+.card-summary.active {
+  display: flex;
+}
+
+.card-summary h2 {
+  color: #ffcb05;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+}
+
+.card-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.card-summary-grid img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  transition: transform 0.3s;
+}
+
+.card-summary-grid img:hover {
+  transform: scale(1.05);
+}
+
+.summary-close-btn {
+  background: linear-gradient(135deg, #ffcb05, #e8a000);
+  color: #1a0000;
+  border: none;
+  border-radius: 25px;
+  padding: 0.75rem 2rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.2s;
+}
+
+.summary-close-btn:hover {
+  transform: scale(1.05);
+}
+
+/* =============================================
+   RESPONSIVE - POKECOINS
+   ============================================= */
+
+@media (max-width: 768px) {
+  .pokecoins-panel {
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .pokecoins-fab {
+    width: 50px;
+    height: 50px;
+    bottom: 16px;
+    left: 16px;
+  }
+
+  .pokecoins-fab::after {
+    width: 12px;
+    height: 12px;
+    border-width: 2px;
+  }
+
+  .revealed-card {
+    width: 200px;
+    height: 280px;
+  }
+
+  .booster-pack-container {
+    width: 180px;
+    height: 260px;
+  }
+
+  .card-summary-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .revealed-card {
+    width: 170px;
+    height: 240px;
+  }
+
+  .booster-pack-container {
+    width: 150px;
+    height: 220px;
+  }
+
+  .card-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -172,6 +172,98 @@ body {
   background-color: var(--color-primary);
 }
 
+/* --- EXPANSIONES DROPDOWN --- */
+.expansiones-wrapper {
+  position: relative;
+}
+
+.expansiones-toggle {
+  cursor: pointer;
+  user-select: none;
+}
+
+.expansiones-toggle .arrow {
+  font-size: 0.65rem;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.expansiones-toggle.open .arrow {
+  transform: rotate(180deg);
+}
+
+.expansiones-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #120000;
+  border: 1px solid rgba(255,203,5,0.2);
+  border-radius: var(--border-radius);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+  padding: var(--spacing-md) var(--spacing-lg);
+  min-width: 420px;
+  z-index: 1100;
+  gap: var(--spacing-lg);
+  animation: dropdownFadeIn 0.25s ease;
+}
+
+.expansiones-dropdown.show {
+  display: flex;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.expansiones-col {
+  flex: 1;
+  min-width: 180px;
+}
+
+.expansiones-col h4 {
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-black);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255,203,5,0.15);
+}
+
+.expansiones-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.expansiones-col ul li {
+  margin-bottom: 0.4rem;
+}
+
+.expansiones-col ul li a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s;
+  display: block;
+  padding: 0.3rem 0;
+}
+
+.expansiones-col ul li a:hover {
+  color: var(--color-primary);
+}
+
+.exp-coming-soon {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
@@ -494,11 +586,23 @@ body {
    ============================================= */
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--spacing-lg);
   max-width: 1100px;
   margin: 0 auto;
   justify-items: center;
+}
+
+.productos-grid > * {
+  grid-column: span 2;
+}
+
+.productos-grid > :nth-child(4) {
+  grid-column: 2 / 4;
+}
+
+.productos-grid > :nth-child(5) {
+  grid-column: 4 / 6;
 }
 
 .producto-card {
@@ -1424,6 +1528,37 @@ body {
     display: none !important;
   }
 
+  /* --- EXPANSIONES DROPDOWN MOBILE --- */
+  .expansiones-wrapper {
+    position: static;
+  }
+
+  .expansiones-dropdown {
+    position: static;
+    transform: none;
+    min-width: 100%;
+    flex-direction: column;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: rgba(255,203,5,0.04);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .expansiones-dropdown.show {
+    display: flex;
+  }
+
+  @keyframes dropdownFadeIn {
+    from { opacity: 0; transform: none; }
+    to { opacity: 1; transform: none; }
+  }
+
+  .expansiones-col h4 {
+    font-size: 0.65rem;
+  }
+
   .nav-actions {
     order: 1;
     gap: var(--spacing-xs);
@@ -1503,6 +1638,15 @@ body {
     gap: var(--spacing-sm);
   }
 
+  .productos-grid > * {
+    grid-column: auto;
+  }
+
+  .productos-grid > :nth-child(4),
+  .productos-grid > :nth-child(5) {
+    grid-column: auto;
+  }
+
   .producto-card {
     max-width: 100%;
   }
@@ -1547,7 +1691,17 @@ body {
   .novedades-block {
     flex-direction: column !important;
     text-align: center;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+
+  /* Force cards always on top, text always below */
+  .novedades-block .card-fan,
+  .novedades-block .card-fan--right {
+    order: 1;
+  }
+
+  .novedades-block .novedades-text {
+    order: 2;
   }
 
   .novedades-title {
@@ -1818,6 +1972,12 @@ body {
   .productos-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-sm);
+  }
+
+  .productos-grid > *,
+  .productos-grid > :nth-child(4),
+  .productos-grid > :nth-child(5) {
+    grid-column: auto;
   }
 
   .producto-card {
@@ -2772,6 +2932,10 @@ body {
 .shop-grid {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
   max-width: 1200px !important;
+}
+
+.shop-grid > * {
+  grid-column: auto !important;
 }
 
 .producto-card-inner {

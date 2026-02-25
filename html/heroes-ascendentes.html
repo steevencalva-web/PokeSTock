@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megaevolución – Héroes Ascendentes | PokeStock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/pokecoins.css">
+  <style>
+    /* =============================================
+       HÉROES ASCENDENTES – EXPANSION PAGE THEME
+       Purple / Orange / Blue with particle effects
+       ============================================= */
+
+    :root {
+      --ha-purple: #4a1a6b;
+      --ha-purple-dark: #2d0e42;
+      --ha-purple-light: #7b3fa0;
+      --ha-orange: #e8722a;
+      --ha-orange-glow: #ff9040;
+      --ha-blue: #1a3a6b;
+      --ha-blue-light: #3a7bd5;
+      --ha-bg: #0d0a1a;
+      --ha-card-bg: #1a1230;
+      --ha-border: rgba(122, 63, 160, 0.3);
+    }
+
+    body.ha-page {
+      background: var(--ha-bg);
+      padding-top: 4rem;
+    }
+
+    /* --- HERO BANNER --- */
+    .ha-hero {
+      position: relative;
+      width: 100%;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      background: #0d0a1a;
+    }
+
+    .ha-hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      z-index: 1;
+    }
+
+    .ha-hero-logo-img {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: block;
+      max-width: 380px;
+      width: 50%;
+      filter: drop-shadow(0 4px 30px rgba(0,0,0,0.6));
+    }
+
+    /* --- STICKY INTERNAL NAV --- */
+    .ha-internal-nav {
+      position: sticky;
+      top: 4rem;
+      z-index: 100;
+      background: linear-gradient(180deg, var(--ha-purple-dark) 0%, rgba(45, 14, 66, 0.95) 100%);
+      border-bottom: 2px solid var(--ha-orange);
+      backdrop-filter: blur(12px);
+    }
+
+    .ha-internal-nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      list-style: none;
+      padding: 0.8rem 1rem;
+      margin: 0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ha-internal-nav a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+
+    .ha-internal-nav a:hover {
+      color: var(--ha-orange-glow);
+    }
+
+    /* --- COMMON SECTION STYLING --- */
+    .ha-section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .ha-section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .ha-section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--ha-purple-light), var(--ha-orange));
+      margin: 0.75rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* --- CARTAS DESTACADAS --- */
+    .ha-featured-cards {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .ha-featured-cards .ha-card-item {
+      grid-column: span 2;
+    }
+
+    .ha-featured-cards .ha-card-item:nth-child(4) {
+      grid-column: 2 / 4;
+    }
+
+    .ha-featured-cards .ha-card-item:nth-child(5) {
+      grid-column: 4 / 6;
+    }
+
+    .ha-card-item {
+      background: var(--ha-card-bg);
+      border: 1px solid var(--ha-border);
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .ha-card-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 30px rgba(122, 63, 160, 0.4);
+    }
+
+    .ha-card-item img {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .ha-card-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .ha-gallery-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
+      background: linear-gradient(135deg, var(--ha-purple-light), var(--ha-orange));
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .ha-gallery-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(232, 114, 42, 0.4);
+    }
+
+    /* --- NOVEDADES SECTION --- */
+    .ha-novedades-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .ha-novedades-block {
+      margin-bottom: 4rem;
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .ha-novedades-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .ha-novedades-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .ha-novedades-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--ha-orange-glow);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .ha-novedades-text p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .ha-novedades-cards {
+      flex: 1;
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .ha-novedades-cards img {
+      width: 130px;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .ha-novedades-cards img:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    /* --- PRODUCTOS DESTACADOS --- */
+    .ha-products-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .ha-products-grid .ha-product-card {
+      grid-column: span 2;
+    }
+
+    .ha-products-grid .ha-product-card:nth-child(4) {
+      grid-column: 2 / 4;
+    }
+
+    .ha-products-grid .ha-product-card:nth-child(5) {
+      grid-column: 4 / 6;
+    }
+
+    .ha-product-card {
+      background: var(--ha-card-bg);
+      border: 1px solid var(--ha-border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .ha-product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(122, 63, 160, 0.35);
+    }
+
+    .ha-product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      padding: 1rem;
+      background: linear-gradient(135deg, rgba(74,26,107,0.15), rgba(26,18,48,0.8));
+    }
+
+    .ha-product-info {
+      padding: 1rem;
+    }
+
+    .ha-product-info h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .ha-product-btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      background: var(--ha-orange);
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+
+    .ha-product-btn:hover {
+      background: var(--ha-orange-glow);
+    }
+
+    /* --- NEWSLETTER (expansion version) --- */
+    .ha-newsletter {
+      background: linear-gradient(135deg, var(--ha-purple-dark), var(--ha-blue));
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+      border: 1px solid rgba(122,63,160,0.3);
+    }
+
+    .ha-newsletter h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .ha-newsletter p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    .ha-newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    .ha-newsletter-form input {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--ha-border);
+      border-radius: 25px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .ha-newsletter-form input:focus {
+      border-color: var(--ha-orange);
+    }
+
+    .ha-newsletter-form button {
+      padding: 0.65rem 1.5rem;
+      background: var(--ha-orange);
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .ha-newsletter-form button:hover {
+      background: var(--ha-orange-glow);
+    }
+
+    /* --- FOOTER (expansion page) --- */
+    .ha-footer {
+      background: #080510;
+      border-top: 1px solid var(--ha-border);
+      text-align: center;
+      padding: 2rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+    }
+
+    .ha-footer a {
+      color: var(--ha-purple-light);
+      text-decoration: none;
+    }
+
+    .ha-footer a:hover {
+      color: var(--ha-orange-glow);
+    }
+
+    .ha-back-top {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--ha-border);
+      border-radius: 25px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+    }
+
+    .ha-back-top:hover {
+      border-color: var(--ha-orange);
+      color: var(--ha-orange);
+    }
+
+    /* =============================================
+       HÉROES ASCENDENTES – MOBILE RESPONSIVE
+       ============================================= */
+
+    @media (max-width: 768px) {
+      .ha-hero {
+        min-height: 350px;
+      }
+
+      .ha-hero-logo-img {
+        max-width: 280px;
+        width: 50%;
+        bottom: 1rem;
+      }
+
+      .ha-internal-nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .ha-internal-nav a {
+        font-size: 0.65rem;
+      }
+
+      .ha-section {
+        padding: 2.5rem 1rem;
+      }
+
+      .ha-section-title {
+        font-size: 1.4rem;
+      }
+
+      .ha-featured-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .ha-featured-cards .ha-card-item,
+      .ha-featured-cards .ha-card-item:nth-child(4),
+      .ha-featured-cards .ha-card-item:nth-child(5) {
+        grid-column: auto;
+      }
+
+      .ha-novedades-block,
+      .ha-novedades-block:nth-child(even) {
+        flex-direction: column;
+      }
+
+      .ha-novedades-cards {
+        order: 1;
+      }
+
+      .ha-novedades-text {
+        order: 2;
+        min-width: unset;
+      }
+
+      .ha-novedades-cards img {
+        width: 100px;
+      }
+
+      .ha-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .ha-products-grid .ha-product-card,
+      .ha-products-grid .ha-product-card:nth-child(4),
+      .ha-products-grid .ha-product-card:nth-child(5) {
+        grid-column: auto;
+      }
+
+      .ha-newsletter {
+        padding: 2rem 1rem;
+      }
+
+      .ha-newsletter-form {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ha-hero {
+        min-height: 220px;
+      }
+
+      .ha-hero-logo-img {
+        max-width: 180px;
+        width: 45%;
+        bottom: 0.5rem;
+      }
+
+      .ha-featured-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .ha-products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ha-novedades-cards img {
+        width: 85px;
+      }
+    }
+  </style>
+</head>
+<body class="ha-page" id="top">
+
+  <!-- Header (same as main site) -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="../Imagenes/Diseño Definitivo.png" alt="PokeStock" class="logo-img">
+        </a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="mainNav">
+        <ul class="nav-list">
+          <li><a href="#productos-destacados" class="nav-link">PRODUCTOS</a></li>
+          <li><a href="tienda.html" class="nav-link nav-link-page">TIENDA</a></li>
+          <li class="expansiones-wrapper">
+            <a href="#" class="nav-link expansiones-toggle">EXPANSIONES <span class="arrow">▾</span></a>
+            <div class="expansiones-dropdown" id="expansionesDropdown">
+              <div class="expansiones-col">
+                <h4>EXPANSIONES RECIENTES</h4>
+                <ul>
+                  <li><a href="heroes-ascendentes.html" style="color:var(--ha-orange-glow);">Megaevolución – Héroes Ascendentes</a></li>
+                  <li><a href="index.html">Escarlata y Púrpura – Chispas Fulgurantes</a></li>
+                </ul>
+              </div>
+              <div class="expansiones-col">
+                <h4>EXPANSIONES ANTERIORES</h4>
+                <ul>
+                  <li><span class="exp-coming-soon">Próximamente</span></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li><a href="#novedades-expansion" class="nav-link">NOVEDADES</a></li>
+          <li><a href="#cartas-destacadas" class="nav-link">PROTAGONISTAS</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <input type="search" id="searchInput" placeholder="Buscar...">
+        <button class="cart-btn" id="cartToggle" aria-label="Carrito">🛒<span id="cartCount">0</span></button>
+        <div class="user-menu-wrapper">
+          <button class="user-btn" id="userBtn" aria-label="Cuenta">👤</button>
+          <div class="user-dropdown" id="userDropdown"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== HERO BANNER ===================== -->
+  <section class="ha-hero">
+    <video class="ha-hero-video" autoplay muted loop playsinline>
+      <source src="../Videos/me2dot5-large.webm" type="video/webm">
+    </video>
+    <img class="ha-hero-logo-img"
+         src="../Imagenes/Megaevolucion%20heroes%20ascendentes.png"
+         alt="Megaevolución – Héroes Ascendentes">
+  </section>
+
+  <!-- ===================== INTERNAL NAV ===================== -->
+  <nav class="ha-internal-nav">
+    <ul>
+      <li><a href="#cartas-destacadas">CARTAS DESTACADAS</a></li>
+      <li><a href="#novedades-expansion">NOVEDADES DE LA EXPANSIÓN</a></li>
+      <li><a href="#productos-destacados">PRODUCTOS DESTACADOS</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===================== CARTAS DESTACADAS ===================== -->
+  <section class="ha-section" id="cartas-destacadas">
+    <h2 class="ha-section-title">Cartas Destacadas</h2>
+    <p style="text-align:center; color:rgba(255,255,255,0.6); margin-bottom:2rem; font-size:0.9rem;">
+      Haz clic en una carta para ampliarla.
+    </p>
+    <div class="ha-featured-cards">
+      <div class="ha-card-item">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_275-2x.png"
+             alt="Mega-Froslass ex">
+      </div>
+      <div class="ha-card-item">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_270-2x.png"
+             alt="Mega-Scrafty ex">
+      </div>
+      <div class="ha-card-item">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_268-2x.png"
+             alt="Mega-Hawlucha ex">
+      </div>
+      <div class="ha-card-item">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_266-2x.png"
+             alt="Mega-Eelektross ex">
+      </div>
+      <div class="ha-card-item">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_269-2x.png"
+             alt="Mega-Gengar ex">
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <a href="#" class="ha-gallery-link">Ver la Galería de Cartas</a>
+    </div>
+  </section>
+
+  <!-- ===================== NOVEDADES DE LA EXPANSIÓN ===================== -->
+  <section class="ha-section" id="novedades-expansion">
+    <h2 class="ha-section-title">Novedades de la Expansión</h2>
+
+    <!-- Block 1: Rara Ilustración -->
+    <div class="ha-novedades-block">
+      <div class="ha-novedades-cards">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_221-2x.png" alt="Budew">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_226-2x.png" alt="Psyduck">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_288-2x.png" alt="Fezandipiti ex">
+      </div>
+      <div class="ha-novedades-text">
+        <h3>Cartas de Rareza Rara Ilustración y Rara Ilustración Especial</h3>
+        <p>
+          Admira la belleza del polen de Budew, relájate con Psyduck en el agua,
+          y presencia el aplomo de Mega-Froslass ex y Fezandipiti ex.
+          Hay muchas más hermosas cartas de rareza Rara Ilustración y Rara Ilustración
+          Especial que descubrir en Megaevolución – Héroes Ascendentes.
+        </p>
+      </div>
+    </div>
+
+    <!-- Block 2: Entrenadores -->
+    <div class="ha-novedades-block">
+      <div class="ha-novedades-cards">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_3-2x.png" alt="Vileplume ex de Erika">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_174-2x.png" alt="Staraptor de Laureano">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_162-2x.png" alt="Kangaskhan ex del Team Rocket">
+      </div>
+      <div class="ha-novedades-text">
+        <h3>Los Entrenadores y sus Pokémon Forman Equipo</h3>
+        <p>
+          Los Pokémon de Entrenadores regresaron en la serie Escarlata y Púrpura,
+          ¡y están de vuelta en Megaevolución – Héroes Ascendentes! Prepárate
+          para tu próximo desafío con los flamantes Pokémon de Erika y de Laureano,
+          o amplía tu baraja del Team Rocket con la última incorporación.
+        </p>
+      </div>
+    </div>
+
+    <!-- Block 3: Mega Ilustraciones -->
+    <div class="ha-novedades-block">
+      <div class="ha-novedades-cards">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_97-2x.png" alt="Mimikyu del Team Rocket">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_270-2x.png" alt="Mega-Scrafty ex">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_268-2x.png" alt="Mega-Hawlucha ex">
+      </div>
+      <div class="ha-novedades-text">
+        <h3>Pokémon ex Megaevolución con Ilustraciones Megaimpresionantes</h3>
+        <p>
+          Puede que recuerdes la época de los M-Pokémon-EX en la serie XY.
+          Este estilo resultó de lo más popular, y su espíritu perdura con el
+          debut de las cartas de rareza Rara Ataque Mega, una nueva rareza que
+          presenta a los Pokémon ex Megaevolución con ilustraciones únicas de
+          colores vivos y los nombres de los ataques en japonés.
+        </p>
+      </div>
+    </div>
+
+    <!-- Block 4: Primeros Compañeros -->
+    <div class="ha-novedades-block">
+      <div class="ha-novedades-cards">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_10-2x.png" alt="Mega-Meganium ex">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_31-2x.png" alt="Mega-Emboar ex">
+        <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_43-2x.png" alt="Mega-Feraligatr ex">
+      </div>
+      <div class="ha-novedades-text">
+        <h3>Primeros Compañeros Pokémon Megaevolución como Pokémon ex</h3>
+        <p>
+          Tanto si estos Pokémon te han acompañado en una aventura por Ciudad
+          Luminalia como si no, han llegado para dejar huella en JCC Pokémon.
+          Mega-Meganium ex, Mega-Emboar ex y Mega-Feraligatr ex cuentan con
+          poderosos ataques que pueden recibir un apoyo óptimo de otras cartas
+          de su cadena evolutiva.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRODUCTOS DESTACADOS ===================== -->
+  <section class="ha-section" id="productos-destacados">
+    <h2 class="ha-section-title">Productos Destacados</h2>
+    <div class="ha-products-grid">
+      <div class="ha-product-card">
+        <img src="../Imagenes/Pack1.png" alt="Caja de Entrenador Élite">
+        <div class="ha-product-info">
+          <h4>Caja de Entrenador Élite de Megaevolución – Héroes Ascendentes</h4>
+          <a href="tienda.html" class="ha-product-btn">Ver en Tienda</a>
+        </div>
+      </div>
+      <div class="ha-product-card">
+        <img src="../Imagenes/Coleccion1.png" alt="Colección con pegatinas especiales">
+        <div class="ha-product-info">
+          <h4>Colección con pegatinas especiales de Megaevolución – Héroes Ascendentes</h4>
+          <a href="tienda.html" class="ha-product-btn">Ver en Tienda</a>
+        </div>
+      </div>
+      <div class="ha-product-card">
+        <img src="../Imagenes/Coleccion2.png" alt="Colección con póster prémium">
+        <div class="ha-product-info">
+          <h4>Colección con póster prémium de Megaevolución – Héroes Ascendentes</h4>
+          <a href="tienda.html" class="ha-product-btn">Ver en Tienda</a>
+        </div>
+      </div>
+      <div class="ha-product-card">
+        <img src="../Imagenes/Coleccion3.png" alt="Colección Erika/Laureano">
+        <div class="ha-product-info">
+          <h4>Colección Erika/Laureano de Megaevolución – Héroes Ascendentes</h4>
+          <a href="tienda.html" class="ha-product-btn">Ver en Tienda</a>
+        </div>
+      </div>
+      <div class="ha-product-card">
+        <img src="../Imagenes/Coleccion4.png" alt="Colección Erika/Laureano">
+        <div class="ha-product-info">
+          <h4>Colección Erika/Laureano de Megaevolución – Héroes Ascendentes</h4>
+          <a href="tienda.html" class="ha-product-btn">Ver en Tienda</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER ===================== -->
+  <section class="ha-section">
+    <div class="ha-newsletter">
+      <h2>Captura las Novedades de JCC Pokémon en tu Bandeja de Entrada</h2>
+      <p>Activa los correos electrónicos para estar al día de todo lo relacionado con la serie Megaevolución de JCC Pokémon.</p>
+      <form class="ha-newsletter-form" onsubmit="event.preventDefault(); alert('¡Suscrito correctamente!');">
+        <input type="email" placeholder="Tu email..." required>
+        <button type="submit">Suscribirse</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="ha-footer">
+    <p>©2025 PokeStock. Pokémon y sus marcas son propiedad de Nintendo/Creatures Inc./GAME FREAK inc.</p>
+    <p style="margin-top:0.5rem;"><a href="index.html">← Volver a PokeStock</a></p>
+    <a href="#top" class="ha-back-top">Volver al principio ↑</a>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-panel" id="cartPanel">
+    <div class="cart-panel-header">
+      <h2>Tu Carrito</h2>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+    <div class="cart-panel-body" id="cartPanelBody">
+      <p class="cart-empty">Tu carrito está vacío</p>
+    </div>
+    <div class="cart-panel-footer" id="cartPanelFooter" style="display:none;">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">€0.00</span>
+      </div>
+      <button class="btn btn-primary cart-pay-btn" id="cartPayBtn">PROCEDER AL PAGO</button>
+    </div>
+    <div class="cart-payment" id="cartPayment" style="display:none;">
+      <h3>Datos de Pago</h3>
+      <form id="paymentForm" class="payment-form">
+        <input type="text" id="payName" placeholder="Nombre completo" required>
+        <input type="text" id="payCard" placeholder="Número de tarjeta" required maxlength="19">
+        <div class="payment-row">
+          <input type="text" id="payExpiry" placeholder="MM/AA" required maxlength="5">
+          <input type="text" id="payCvv" placeholder="CVV" required maxlength="4">
+        </div>
+        <input type="email" id="payEmail" placeholder="Email de confirmación" required>
+        <button type="submit" class="btn btn-primary cart-pay-btn">PAGAR AHORA</button>
+      </form>
+    </div>
+    <div class="cart-success" id="cartSuccess" style="display:none;">
+      <div class="success-icon">✅</div>
+      <h3>¡Pago Exitoso!</h3>
+      <p>Tu pedido ha sido procesado correctamente. Recibirás un email de confirmación en breve.</p>
+      <button class="btn btn-primary" id="cartSuccessClose">CERRAR</button>
+    </div>
+  </aside>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-content">
+      <p>Este sitio web utiliza cookies para mejorar tu experiencia de navegación. Al continuar navegando, aceptas el uso de cookies conforme a nuestra <a href="#" id="cookiePolicyLink">Política de Cookies</a>.</p>
+      <button class="btn cookie-accept" id="cookieAccept">ACEPTO LAS COOKIES</button>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div class="privacy-overlay" id="privacyOverlay"></div>
+  <div class="privacy-modal" id="privacyModal">
+    <div class="privacy-modal-header">
+      <h2>Política de Privacidad</h2>
+      <button class="privacy-close" id="privacyClose">✕</button>
+    </div>
+    <div class="privacy-modal-body">
+      <h3>1. Responsable del tratamiento</h3>
+      <p>PokeStock es responsable del tratamiento de los datos personales recogidos a través de este sitio web.</p>
+      <h3>2. Datos que recopilamos</h3>
+      <p>Recopilamos los datos que nos proporcionas voluntariamente: nombre, dirección de correo electrónico, información de pago (procesada de forma segura) y datos de navegación mediante cookies.</p>
+      <h3>3. Finalidad del tratamiento</h3>
+      <p>Tus datos se utilizan para gestionar pedidos, enviar newsletters (si te suscribes), mejorar la experiencia de usuario y realizar análisis estadísticos anónimos del tráfico web.</p>
+      <p class="privacy-date">Última actualización: Febrero 2026</p>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div class="auth-overlay" id="authOverlay"></div>
+  <div class="auth-modal" id="authModal">
+    <div class="auth-form" id="loginFormContainer">
+      <div class="auth-modal-header">
+        <h2>Iniciar Sesión</h2>
+        <button class="auth-close" id="authCloseLogin">✕</button>
+      </div>
+      <form id="loginFormEl">
+        <div class="auth-field">
+          <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+        </div>
+        <div class="auth-field">
+          <input type="password" id="loginPassword" placeholder="Contraseña" required>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">INICIAR SESIÓN</button>
+      </form>
+      <p class="auth-switch">¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+    </div>
+    <div class="auth-form" id="registerFormContainer" style="display:none;">
+      <div class="auth-modal-header">
+        <h2>Crear Cuenta</h2>
+        <button class="auth-close" id="authCloseRegister">✕</button>
+      </div>
+      <form id="registerFormEl">
+        <div class="auth-field">
+          <input type="text" id="registerName" placeholder="Nombre completo" required>
+        </div>
+        <div class="auth-field">
+          <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+        </div>
+        <div class="auth-field">
+          <input type="password" id="registerPassword" placeholder="Contraseña (mín. 6 caracteres)" required minlength="6">
+        </div>
+        <div class="auth-field">
+          <input type="password" id="registerPassword2" placeholder="Confirmar contraseña" required>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">CREAR CUENTA</button>
+      </form>
+      <p class="auth-switch">¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión</a></p>
+    </div>
+  </div>
+
+  <!-- Account Settings Modal -->
+  <div class="account-overlay" id="accountOverlay"></div>
+  <div class="account-modal" id="accountModal">
+    <div class="account-modal-header">
+      <h2>Mi Cuenta</h2>
+      <button class="account-close" id="accountClose">✕</button>
+    </div>
+    <div class="account-modal-body">
+      <form id="accountFormEl">
+        <div class="auth-field">
+          <label>Nombre</label>
+          <input type="text" id="accountName" placeholder="Tu nombre" required>
+        </div>
+        <div class="auth-field">
+          <label>Correo electrónico</label>
+          <input type="email" id="accountEmail" disabled>
+        </div>
+        <hr class="account-divider">
+        <h3>Cambiar Contraseña</h3>
+        <div class="auth-field">
+          <input type="password" id="accountOldPassword" placeholder="Contraseña actual">
+        </div>
+        <div class="auth-field">
+          <input type="password" id="accountNewPassword" placeholder="Nueva contraseña" minlength="6">
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">GUARDAR CAMBIOS</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Orders Modal -->
+  <div class="orders-overlay" id="ordersOverlay"></div>
+  <div class="orders-modal" id="ordersModal">
+    <div class="orders-modal-header">
+      <h2>Mis Pedidos</h2>
+      <button class="orders-close" id="ordersClose">✕</button>
+    </div>
+    <div class="orders-modal-body" id="ordersModalBody">
+      <p class="orders-empty">No tienes pedidos todavía</p>
+    </div>
+  </div>
+
+  <!-- PokeCoins FAB -->
+  <button class="pokecoins-fab" id="pokecoinsFab" title="PokeCoins">
+    <span class="fab-badge">0</span>
+  </button>
+
+  <!-- PokeCoins Panel Overlay -->
+  <div class="pokecoins-panel-overlay" id="pokecoinsPanelOverlay"></div>
+
+  <!-- PokeCoins Panel -->
+  <div class="pokecoins-panel" id="pokecoinsPanel">
+    <div class="pokecoins-panel-header">
+      <h2>🪙 PokeCoins</h2>
+      <button class="pokecoins-panel-close" id="pokecoinsPanelClose">✕</button>
+    </div>
+    <div class="pokecoins-panel-body">
+      <div class="pokecoins-balance">
+        <span class="balance-label">Tu saldo</span>
+        <span class="balance-amount">0</span>
+        <span class="balance-currency">PokeCoins</span>
+      </div>
+      <p class="pokecoins-earn-info">Gana <strong>10 PokeCoins</strong> por cada €1 de compra</p>
+      <h3 class="rewards-title">Canjear Descuentos</h3>
+      <div class="reward-card">
+        <div class="reward-info"><span class="reward-name">Descuento €1</span><span class="reward-cost">🪙 50</span></div>
+        <button class="reward-redeem-btn" data-amount="1" data-cost="50" disabled>CANJEAR</button>
+      </div>
+      <div class="reward-card">
+        <div class="reward-info"><span class="reward-name">Descuento €3</span><span class="reward-cost">🪙 120</span></div>
+        <button class="reward-redeem-btn" data-amount="3" data-cost="120" disabled>CANJEAR</button>
+      </div>
+      <div class="reward-card">
+        <div class="reward-info"><span class="reward-name">Descuento €5</span><span class="reward-cost">🪙 200</span></div>
+        <button class="reward-redeem-btn" data-amount="5" data-cost="200" disabled>CANJEAR</button>
+      </div>
+      <div class="reward-card">
+        <div class="reward-info"><span class="reward-name">Descuento €10</span><span class="reward-cost">🪙 350</span></div>
+        <button class="reward-redeem-btn" data-amount="10" data-cost="350" disabled>CANJEAR</button>
+      </div>
+      <h3 class="rewards-title">Mystery Box</h3>
+      <div class="reward-card mystery">
+        <div class="reward-info"><span class="reward-name">🎁 Mystery Box</span><span class="reward-cost">🪙 150</span></div>
+        <button class="mystery-buy-btn" id="mysteryBoxPanelBtn" data-cost="150" disabled>ABRIR MYSTERY BOX</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Opening Overlay -->
+  <div class="card-opening-overlay" id="cardOpeningOverlay"></div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/pokecoins.js"></script>
+</body>
+</html>

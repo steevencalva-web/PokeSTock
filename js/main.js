@@ -416,6 +416,23 @@ function setupCart() {
         document.getElementById('cartPayment').style.display = 'none';
         document.getElementById('cartSuccess').style.display = 'block';
 
+        // Award PokeCoins
+        if (typeof addPokeCoins === 'function' && typeof coinsForPurchase === 'function') {
+          const earned = coinsForPurchase(order.total);
+          if (earned > 0) {
+            addPokeCoins(earned);
+            setTimeout(() => {
+              mostrarToast(`🪙 ¡Has ganado ${earned} PokeCoins!`, 'success');
+            }, 500);
+          }
+        }
+
+        // Clear discount after use
+        if (typeof activeDiscount !== 'undefined' && activeDiscount) {
+          activeDiscount = null;
+          if (typeof saveDiscount === 'function') saveDiscount();
+        }
+
         // Clear cart
         cart = [];
         saveCart();
@@ -1045,12 +1062,45 @@ function setupHamburger() {
     nav.classList.toggle('active');
   });
 
-  // Close menu when clicking a nav link
-  nav.querySelectorAll('.nav-link').forEach(link => {
+  // Close menu when clicking a nav link (exclude expansiones toggle)
+  nav.querySelectorAll('.nav-link:not(.expansiones-toggle)').forEach(link => {
     link.addEventListener('click', () => {
       btn.classList.remove('active');
       nav.classList.remove('active');
     });
+  });
+}
+
+// ============================================
+// EXPANSIONES DROPDOWN
+// ============================================
+
+function setupExpansionesDropdown() {
+  const toggles = document.querySelectorAll('.expansiones-toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const dropdown = toggle.nextElementSibling;
+      const isOpen = dropdown.classList.contains('show');
+
+      // Close all dropdowns first
+      document.querySelectorAll('.expansiones-dropdown.show').forEach(d => d.classList.remove('show'));
+      document.querySelectorAll('.expansiones-toggle.open').forEach(t => t.classList.remove('open'));
+
+      if (!isOpen) {
+        dropdown.classList.add('show');
+        toggle.classList.add('open');
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.expansiones-wrapper')) {
+      document.querySelectorAll('.expansiones-dropdown.show').forEach(d => d.classList.remove('show'));
+      document.querySelectorAll('.expansiones-toggle.open').forEach(t => t.classList.remove('open'));
+    }
   });
 }
 
@@ -1076,6 +1126,10 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCookieBanner();
   setupPrivacyModal();
   setupHamburger();
+  setupExpansionesDropdown();
+
+  // PokeCoins system
+  if (typeof setupPokeCoins === 'function') setupPokeCoins();
 
   if (isShopPage) {
     // Shop page: render full product cards
