@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda - PokeStock</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../Imagenes/Dise%C3%B1o%20Definitivo.png">
+  <link rel="apple-touch-icon" href="../Imagenes/Dise%C3%B1o%20Definitivo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="../Imagenes/Diseño Definitivo.png" alt="PokeStock" class="logo-img">
+        </a>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html#catalogo" class="nav-link nav-link-page">PRODUCTOS</a></li>
+          <li><a href="tienda.html" class="nav-link nav-link-page active">TIENDA</a></li>
+          <li><a href="index.html#novedades" class="nav-link nav-link-page">NOVEDADES</a></li>
+          <li><a href="index.html#protagonistas" class="nav-link nav-link-page">PROTAGONISTAS</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <input type="search" id="searchInput" placeholder="Buscar productos...">
+        <button class="cart-btn" id="cartToggle" aria-label="Carrito">🛒<span id="cartCount">0</span></button>
+        <div class="user-menu-wrapper">
+          <button class="user-btn" id="userBtn" aria-label="Cuenta">👤</button>
+          <div class="user-dropdown" id="userDropdown"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Shop Hero -->
+  <section class="shop-hero">
+    <div class="container">
+      <h1 class="shop-hero-title">NUESTRA TIENDA</h1>
+      <p class="shop-hero-subtitle">Explora todos nuestros productos Pokémon TCG. Encuentra cajas, packs y sobres de la expansión Chispas Fulgurantes.</p>
+    </div>
+  </section>
+
+  <!-- Shop Content -->
+  <section class="shop-section">
+    <div class="container">
+      <!-- Filters -->
+      <div class="shop-filters">
+        <button class="filter-btn active" data-category="todos">Todos</button>
+        <button class="filter-btn" data-category="caja">Cajas</button>
+        <button class="filter-btn" data-category="pack">Packs</button>
+        <button class="filter-btn" data-category="sobre">Sobres</button>
+      </div>
+      <div class="shop-results-count" id="shopResultsCount"></div>
+      <!-- Product Grid -->
+      <div class="productos-grid shop-grid" id="tiendaGrid">
+        <!-- Products injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-legal">
+        <p class="footer-copy">&copy; 2026 PokeStock. Todos los derechos reservados. Pokémon es marca registrada de The Pokémon Company.</p>
+        <div class="footer-legal-links">
+          <a href="#" id="privacyLink2">Política de Privacidad</a>
+          <span>|</span>
+          <a href="#" id="cookiesLink">Política de Cookies</a>
+          <span>|</span>
+          <a href="#">Términos y Condiciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-panel" id="cartPanel">
+    <div class="cart-panel-header">
+      <h2>Tu Carrito</h2>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+    <div class="cart-panel-body" id="cartPanelBody">
+      <p class="cart-empty">Tu carrito está vacío</p>
+    </div>
+    <div class="cart-panel-footer" id="cartPanelFooter" style="display:none;">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">€0.00</span>
+      </div>
+      <button class="btn btn-primary cart-pay-btn" id="cartPayBtn">PROCEDER AL PAGO</button>
+    </div>
+    <div class="cart-payment" id="cartPayment" style="display:none;">
+      <h3>Datos de Pago</h3>
+      <form id="paymentForm" class="payment-form">
+        <input type="text" id="payName" placeholder="Nombre completo" required>
+        <input type="text" id="payCard" placeholder="Número de tarjeta" required maxlength="19">
+        <div class="payment-row">
+          <input type="text" id="payExpiry" placeholder="MM/AA" required maxlength="5">
+          <input type="text" id="payCvv" placeholder="CVV" required maxlength="4">
+        </div>
+        <input type="email" id="payEmail" placeholder="Email de confirmación" required>
+        <button type="submit" class="btn btn-primary cart-pay-btn">PAGAR AHORA</button>
+      </form>
+    </div>
+    <div class="cart-success" id="cartSuccess" style="display:none;">
+      <div class="success-icon">✅</div>
+      <h3>¡Pago Exitoso!</h3>
+      <p>Tu pedido ha sido procesado correctamente. Recibirás un email de confirmación en breve.</p>
+      <button class="btn btn-primary" id="cartSuccessClose">CERRAR</button>
+    </div>
+  </aside>
+
+  <!-- Auth Modal -->
+  <div class="auth-overlay" id="authOverlay"></div>
+  <div class="auth-modal" id="authModal">
+    <div class="auth-form" id="loginFormContainer">
+      <div class="auth-modal-header">
+        <h2>Iniciar Sesión</h2>
+        <button class="auth-close" id="authCloseLogin">✕</button>
+      </div>
+      <form id="loginFormEl">
+        <div class="auth-field">
+          <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+        </div>
+        <div class="auth-field">
+          <input type="password" id="loginPassword" placeholder="Contraseña" required>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">INICIAR SESIÓN</button>
+      </form>
+      <p class="auth-switch">¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+    </div>
+    <div class="auth-form" id="registerFormContainer" style="display:none;">
+      <div class="auth-modal-header">
+        <h2>Crear Cuenta</h2>
+        <button class="auth-close" id="authCloseRegister">✕</button>
+      </div>
+      <form id="registerFormEl">
+        <div class="auth-field">
+          <input type="text" id="registerName" placeholder="Nombre completo" required>
+        </div>
+        <div class="auth-field">
+          <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+        </div>
+        <div class="auth-field">
+          <input type="password" id="registerPassword" placeholder="Contraseña (mín. 6 caracteres)" required minlength="6">
+        </div>
+        <div class="auth-field">
+          <input type="password" id="registerPassword2" placeholder="Confirmar contraseña" required>
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">CREAR CUENTA</but1.0.1ton>
+      </form>
+      <p class="auth-switch">¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión</a></p>
+    </div>
+  </div>
+
+  <!-- Account Settings Modal -->
+  <div class="account-overlay" id="accountOverlay"></div>
+  <div class="account-modal" id="accountModal">
+    <div class="account-modal-header">
+      <h2>Mi Cuenta</h2>
+      <button class="account-close" id="accountClose">✕</button>
+    </div>
+    <div class="account-modal-body">
+      <form id="accountFormEl">
+        <div class="auth-field">
+          <label>Nombre</label>
+          <input type="text" id="accountName" placeholder="Tu nombre" required>
+        </div>
+        <div class="auth-field">
+          <label>Correo electrónico</label>
+          <input type="email" id="accountEmail" disabled>
+        </div>
+        <hr class="account-divider">
+        <h3>Cambiar Contraseña</h3>
+        <div class="auth-field">
+          <input type="password" id="accountOldPassword" placeholder="Contraseña actual">
+        </div>
+        <div class="auth-field">
+          <input type="password" id="accountNewPassword" placeholder="Nueva contraseña" minlength="6">
+        </div>
+        <button type="submit" class="btn btn-primary auth-submit-btn">GUARDAR CAMBIOS</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Orders Modal -->
+  <div class="orders-overlay" id="ordersOverlay"></div>
+  <div class="orders-modal" id="ordersModal">
+    <div class="orders-modal-header">
+      <h2>Mis Pedidos</h2>
+      <button class="orders-close" id="ordersClose">✕</button>
+    </div>
+    <div class="orders-modal-body" id="ordersModalBody">
+      <p class="orders-empty">No tienes pedidos todavía</p>
+    </div>
+  </div>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-content">
+      <p>Este sitio web utiliza cookies para mejorar tu experiencia de navegación. Al continuar navegando, aceptas el uso de cookies conforme a nuestra <a href="#" id="cookiePolicyLink">Política de Cookies</a>.</p>
+      <button class="btn cookie-accept" id="cookieAccept">ACEPTO LAS COOKIES</button>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div class="privacy-overlay" id="privacyOverlay"></div>
+  <div class="privacy-modal" id="privacyModal">
+    <div class="privacy-modal-header">
+      <h2>Política de Privacidad</h2>
+      <button class="privacy-close" id="privacyClose">✕</button>
+    </div>
+    <div class="privacy-modal-body">
+      <h3>1. Responsable del tratamiento</h3>
+      <p>PokeStock es responsable del tratamiento de los datos personales recogidos a través de este sitio web.</p>
+      <h3>2. Datos que recopilamos</h3>
+      <p>Recopilamos los datos que nos proporcionas voluntariamente: nombre, dirección de correo electrónico, información de pago (procesada de forma segura) y datos de navegación mediante cookies.</p>
+      <h3>3. Finalidad del tratamiento</h3>
+      <p>Tus datos se utilizan para gestionar pedidos, enviar newsletters (si te suscribes), mejorar la experiencia de usuario y realizar análisis estadísticos anónimos del tráfico web.</p>
+      <p class="privacy-date">Última actualización: Febrero 2026</p>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
