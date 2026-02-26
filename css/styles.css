@@ -270,29 +270,6 @@ body {
   gap: var(--spacing-sm);
 }
 
-.nav-actions input[type="search"] {
-  padding: 0.4rem 0.75rem;
-  border: 1px solid var(--color-border);
-  border-radius: 20px;
-  font-size: var(--font-size-sm);
-  transition: var(--transition);
-  min-width: 160px;
-  background-color: rgba(255,255,255,0.06);
-  color: #ffffff;
-  font-family: var(--font-family);
-}
-
-.nav-actions input[type="search"]::placeholder {
-  color: rgba(255,255,255,0.35);
-}
-
-.nav-actions input[type="search"]:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  background-color: rgba(255,255,255,0.1);
-  box-shadow: 0 0 0 3px rgba(255, 203, 5, 0.2);
-}
-
 .cart-btn {
   background: none;
   border: none;
@@ -1655,10 +1632,6 @@ body {
   .nav-actions {
     order: 1;
     gap: var(--spacing-xs);
-  }
-
-  .nav-actions input[type="search"] {
-    display: none;
   }
 
   /* --- HERO / CAROUSEL MOBILE --- */

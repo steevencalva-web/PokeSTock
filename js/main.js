@@ -922,26 +922,6 @@ function setupNavegacion() {
 }
 
 // ============================================
-// BÚSQUEDA
-// ============================================
-
-function setupSearch() {
-  const searchInput = document.getElementById('searchInput');
-  if (!searchInput) return;
-
-  searchInput.addEventListener('input', () => {
-    const term = searchInput.value.toLowerCase();
-    const filtered = products.filter(p => p.nombre.toLowerCase().includes(term));
-
-    if (isShopPage) {
-      renderShopProducts(filtered);
-    } else {
-      renderShowcase(filtered);
-    }
-  });
-}
-
-// ============================================
 // SHOP PAGE FILTERS
 // ============================================
 
@@ -1122,7 +1102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupAccountModal();
   setupOrdersModal();
   setupNavegacion();
-  setupSearch();
+
   setupCookieBanner();
   setupPrivacyModal();
   setupHamburger();
