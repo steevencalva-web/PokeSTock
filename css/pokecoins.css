@@ -8,17 +8,27 @@
   bottom: 24px;
   left: 24px;
   z-index: 900;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background: radial-gradient(circle at 50% 50%, #fff 28%, #333 30%, #333 34%, #ee1515 36%, #cc0000 100%);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.45), inset 0 -2px 6px rgba(0,0,0,0.2);
+  background: transparent;
+  padding: 0;
+  overflow: visible;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.pokecoins-fab .fab-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .pokecoins-fab:hover {
@@ -27,29 +37,24 @@
 }
 
 .pokecoins-fab::after {
-  content: '';
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #fff;
-  border: 3px solid #333;
-  position: absolute;
+  content: none;
 }
 
 .pokecoins-fab .fab-badge {
   position: absolute;
-  top: -6px;
-  right: -6px;
+  top: -8px;
+  right: -8px;
   background: #ffcb05;
   color: #1a0000;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 900;
-  padding: 2px 7px;
+  padding: 2px 6px;
   border-radius: 12px;
-  min-width: 24px;
+  min-width: 22px;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   font-family: 'Roboto', sans-serif;
+  z-index: 10;
 }
 
 /* --- PokeCoins Panel (slides up from bottom-left) --- */
@@ -271,8 +276,8 @@
 
 /* --- Mystery Box Card in Shop --- */
 .mystery-box-card {
-  background: linear-gradient(135deg, #2a0a4a, #1a0a2e);
-  border: 2px solid rgba(255,203,5,0.3);
+  background-color: var(--color-bg-card, #1a0000);
+  border: 1px solid var(--color-border, rgba(255,203,5,0.15));
   border-radius: var(--border-radius-lg, 12px);
   overflow: hidden;
   text-align: center;
@@ -283,20 +288,8 @@
 
 .mystery-box-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 32px rgba(255,203,5,0.3);
-  border-color: #ffcb05;
-}
-
-.mystery-box-card .mystery-icon {
-  font-size: 4rem;
-  margin-bottom: 0.75rem;
-  display: block;
-  animation: mysteryPulse 2s ease-in-out infinite;
-}
-
-@keyframes mysteryPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  box-shadow: 0 8px 32px rgba(255,203,5,0.15);
+  border-color: var(--color-primary, #ffcb05);
 }
 
 .mystery-box-card h3 {
@@ -395,8 +388,8 @@
 /* --- Booster Pack --- */
 .booster-pack-container {
   position: relative;
-  width: 220px;
-  height: 320px;
+  width: 250px;
+  height: 380px;
   perspective: 800px;
   cursor: pointer;
 }
@@ -406,8 +399,8 @@
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  overflow: visible;
+  box-shadow: none;
   transition: transform 0.3s;
 }
 
@@ -415,6 +408,15 @@
   transform: scale(1.03);
 }
 
+.booster-pack-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+}
+
+/* Legacy styles kept for fallback */
 .booster-pack-bg {
   width: 100%;
   height: 100%;
@@ -539,80 +541,29 @@
 .revealed-card {
   width: 260px;
   height: 365px;
-  perspective: 1000px;
   cursor: pointer;
-}
-
-.revealed-card-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.revealed-card.flipping .revealed-card-inner {
-  transform: rotateY(180deg);
-}
-
-.card-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  position: relative;
+  animation: cardSlideIn 0.5s ease;
+  transition: transform 0.2s;
 }
 
-.card-face img {
+.revealed-card:hover {
+  transform: scale(1.03);
+}
+
+.revealed-card-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-
-.card-back {
-  background: linear-gradient(135deg, #1a3a6b, #4a1a6b);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-back .back-design {
-  width: 80%;
-  height: 80%;
-  border: 3px solid rgba(255,203,5,0.3);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.card-back .back-icon {
-  font-size: 3rem;
-}
-
-.card-back .back-text {
-  color: rgba(255,255,255,0.5);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-.card-front {
-  transform: rotateY(180deg);
-}
-
-.card-front img {
+  object-fit: contain;
+  display: block;
   border-radius: 12px;
+  background: #1a1a2e;
 }
 
 /* Card enter animation */
-.revealed-card {
-  animation: cardSlideIn 0.5s ease;
-}
-
 @keyframes cardSlideIn {
   from {
     opacity: 0;
@@ -625,7 +576,7 @@
 }
 
 /* Sparkle effect on rare cards */
-.revealed-card.rare .card-front::after {
+.revealed-card.rare::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -637,8 +588,10 @@
     rgba(255,215,0,0.15) 75%,
     transparent 100%
   );
+  background-size: 200% 200%;
   animation: shimmer 2s linear infinite;
   pointer-events: none;
+  border-radius: 12px;
 }
 
 @keyframes shimmer {
@@ -700,8 +653,8 @@
 
 .card-summary-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
   width: 100%;
 }
 

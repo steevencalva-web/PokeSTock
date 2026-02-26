@@ -477,6 +477,99 @@ body {
 }
 
 /* =============================================
+   INTERNAL NAV BAR (Sticky sub-navigation)
+   ============================================= */
+.sv-internal-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 4rem;
+  z-index: 100;
+  background: linear-gradient(180deg, #1a0000 0%, rgba(26, 0, 0, 0.97) 100%);
+  border-bottom: 3px solid var(--color-primary);
+  border-top: 3px solid var(--color-primary);
+  backdrop-filter: blur(12px);
+}
+
+.sv-internal-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  list-style: none;
+  padding: 0.8rem 1rem;
+  margin: 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sv-internal-nav a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.sv-internal-nav a:hover {
+  color: var(--color-primary);
+}
+
+/* --- Cartas Destacadas Grid (Main Page) --- */
+.sv-featured-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sv-card-item {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.sv-card-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 30px rgba(255, 203, 5, 0.25);
+}
+
+.sv-card-item img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.sv-card-item:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .sv-internal-nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .sv-internal-nav a {
+    font-size: 0.65rem;
+  }
+  .sv-featured-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =============================================
    SECTION STYLES
    ============================================= */
 .featured-section,

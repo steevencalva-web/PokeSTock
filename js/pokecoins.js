@@ -2,26 +2,67 @@
 // POKECOINS SYSTEM
 // ============================================
 
-// --- Card Pool (from CDN + local) ---
+// --- Card Pool (Mega Evolution from pokemontcg.io, Surging Sparks & Ascended Heroes from PTCG Pocket CDN) ---
 const cardPool = [
-  // Common
+  // ===== COMMON =====
+  // Mega Evolution (pokemontcg.io - XY Flashfire)
+  { url: 'https://images.pokemontcg.io/xy2/1.png', rarity: 'common' },
+  { url: 'https://images.pokemontcg.io/xy2/3.png', rarity: 'common' },
+  { url: 'https://images.pokemontcg.io/xy2/5.png', rarity: 'common' },
+  { url: 'https://images.pokemontcg.io/xy2/7.png', rarity: 'common' },
+  { url: 'https://images.pokemontcg.io/xy2/9.png', rarity: 'common' },
+  { url: 'https://images.pokemontcg.io/xy2/15.png', rarity: 'common' },
+  { url: 'https://images.pokemontcg.io/xy2/20.png', rarity: 'common' },
+  { url: 'https://images.pokemontcg.io/xy2/25.png', rarity: 'common' },
+  // Surging Sparks (PTCG Pocket CDN - verified)
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_1-2x.png', rarity: 'common' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_5-2x.png', rarity: 'common' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_10-2x.png', rarity: 'common' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_15-2x.png', rarity: 'common' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_20-2x.png', rarity: 'common' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_25-2x.png', rarity: 'common' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_30-2x.png', rarity: 'common' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_35-2x.png', rarity: 'common' },
+  // Ascended Heroes (PTCG Pocket CDN - verified)
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_1-2x.png', rarity: 'common' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_5-2x.png', rarity: 'common' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_10-2x.png', rarity: 'common' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_15-2x.png', rarity: 'common' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_20-2x.png', rarity: 'common' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_25-2x.png', rarity: 'common' },
-  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_30-2x.png', rarity: 'common' },
-  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_35-2x.png', rarity: 'common' },
-  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_40-2x.png', rarity: 'common' },
-  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_45-2x.png', rarity: 'common' },
-  // Uncommon
+
+  // ===== UNCOMMON =====
+  // Mega Evolution (pokemontcg.io - XY Flashfire + Furious Fists)
+  { url: 'https://images.pokemontcg.io/xy2/30.png', rarity: 'uncommon' },
+  { url: 'https://images.pokemontcg.io/xy2/40.png', rarity: 'uncommon' },
+  { url: 'https://images.pokemontcg.io/xy2/50.png', rarity: 'uncommon' },
+  { url: 'https://images.pokemontcg.io/xy3/20.png', rarity: 'uncommon' },
+  { url: 'https://images.pokemontcg.io/xy3/55.png', rarity: 'uncommon' },
+  // Surging Sparks (verified)
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_57-2x.png', rarity: 'uncommon' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_91-2x.png', rarity: 'uncommon' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_40-2x.png', rarity: 'uncommon' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_50-2x.png', rarity: 'uncommon' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_60-2x.png', rarity: 'uncommon' },
+  // Ascended Heroes (verified)
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_47-2x.png', rarity: 'uncommon' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_61-2x.png', rarity: 'uncommon' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_100-2x.png', rarity: 'uncommon' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_120-2x.png', rarity: 'uncommon' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_150-2x.png', rarity: 'uncommon' },
-  // Rare
+
+  // ===== RARE =====
+  // Mega Evolution (pokemontcg.io - XY Flashfire Mega EX + Full Art)
+  { url: 'https://images.pokemontcg.io/xy2/12.png', rarity: 'rare' },
+  { url: 'https://images.pokemontcg.io/xy2/13.png', rarity: 'rare' },
+  { url: 'https://images.pokemontcg.io/xy2/69.png', rarity: 'rare' },
+  { url: 'https://images.pokemontcg.io/xy2/107.png', rarity: 'rare' },
+  // Surging Sparks (verified)
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_119-2x.png', rarity: 'rare' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_133-2x.png', rarity: 'rare' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_192-2x.png', rarity: 'rare' },
+  { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/surging-sparks/es-es/SV08_ES_208-2x.png', rarity: 'rare' },
+  // Ascended Heroes (verified)
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_221-2x.png', rarity: 'rare' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_266-2x.png', rarity: 'rare' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_268-2x.png', rarity: 'rare' },
@@ -29,6 +70,19 @@ const cardPool = [
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_270-2x.png', rarity: 'rare' },
   { url: 'https://dz3we2x72f7ol.cloudfront.net/expansions/ascended-heroes/es-es/M7XJ_ES_275-2x.png', rarity: 'rare' },
 ];
+
+// --- Booster Pack Cover Images (local) ---
+const boosterCovers = [
+  '../Imagenes/Sobre1.png',
+  '../Imagenes/Sobre2.png',
+  '../Imagenes/Sobre3.png',
+  '../Imagenes/Sobre4.png',
+  '../Imagenes/Sobre5.png',
+];
+
+function getRandomBoosterCover() {
+  return boosterCovers[Math.floor(Math.random() * boosterCovers.length)];
+}
 
 // --- State ---
 let pokeCoins = 0;
@@ -127,7 +181,7 @@ function redeemReward(amount, cost) {
 
 // --- Mystery Box ---
 const MYSTERY_BOX_COST = 150;
-const CARDS_PER_PACK = 6;
+const CARDS_PER_PACK = 10;
 
 function buyMysteryBox() {
   if (!spendPokeCoins(MYSTERY_BOX_COST)) {
@@ -152,14 +206,16 @@ function generatePackCards() {
   const uncommons = cardPool.filter(c => c.rarity === 'uncommon');
   const rares = cardPool.filter(c => c.rarity === 'rare');
 
-  // 3 common, 2 uncommon, 1 rare
-  for (let i = 0; i < 3; i++) {
+  // 5 common, 3 uncommon, 2 rare = 10 cards
+  for (let i = 0; i < 5; i++) {
     cards.push(commons[Math.floor(Math.random() * commons.length)]);
   }
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 3; i++) {
     cards.push(uncommons[Math.floor(Math.random() * uncommons.length)]);
   }
-  cards.push(rares[Math.floor(Math.random() * rares.length)]);
+  for (let i = 0; i < 2; i++) {
+    cards.push(rares[Math.floor(Math.random() * rares.length)]);
+  }
 
   // Shuffle
   for (let i = cards.length - 1; i > 0; i--) {
@@ -194,33 +250,19 @@ function startCardOpening(cards) {
     <div class="booster-pack-container ready-to-cut" id="boosterContainer">
       <div class="booster-cut-line" id="boosterCutLine"></div>
       <div class="booster-pack">
-        <div class="booster-pack-bg">
-          <span class="pack-icon">🎴</span>
-          <span class="pack-title">Mystery Box</span>
-          <span class="pack-subtitle">Héroes Ascendentes</span>
-        </div>
+        <img class="booster-pack-cover" src="${getRandomBoosterCover()}" alt="Sobre Pokémon">
       </div>
     </div>
     <p class="booster-cut-hint" id="cutHint">✂️ Desliza hacia abajo sobre el sobre para abrirlo</p>
     <div class="card-reveal-container" id="cardRevealContainer">
       <div class="card-counter" id="cardCounter"></div>
       <div class="revealed-card" id="revealedCard">
-        <div class="revealed-card-inner">
-          <div class="card-face card-back">
-            <div class="back-design">
-              <span class="back-icon">🎴</span>
-              <span class="back-text">Pokémon TCG</span>
-            </div>
-          </div>
-          <div class="card-face card-front" id="cardFrontFace">
-            <img src="" alt="Carta Pokémon" id="cardFrontImg">
-          </div>
-        </div>
+        <img class="revealed-card-img" src="" alt="Carta Pokémon" id="cardFrontImg">
       </div>
-      <p class="card-hint" id="cardHint">Haz clic en la carta para voltearla</p>
+      <p class="card-hint" id="cardHint">Haz clic en la carta para ver la siguiente</p>
     </div>
     <div class="card-summary" id="cardSummary">
-      <h2>🎉 ¡Tus Cartas!</h2>
+      <h2>¡Tus Cartas!</h2>
       <div class="card-summary-grid" id="cardSummaryGrid"></div>
       <button class="summary-close-btn" id="summaryCloseBtn">CERRAR</button>
     </div>
@@ -252,7 +294,7 @@ function setupOpeningEvents() {
       e.preventDefault();
     };
 
-    const onMove = (e) => {
+    const onMove = onMoveHandler = (e) => {
       if (!isDragging || openingState !== 'pack') return;
       const currentY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
       const diff = currentY - startY;
@@ -275,7 +317,7 @@ function setupOpeningEvents() {
       }
     };
 
-    const onEnd = () => {
+    const onEnd = onEndHandler = () => {
       if (!isDragging) return;
       isDragging = false;
 
@@ -364,11 +406,9 @@ function showCard(index) {
   const cardHint = document.getElementById('cardHint');
 
   if (counterEl) counterEl.textContent = `Carta ${index + 1} de ${currentPackCards.length}`;
-  if (cardFrontImg) cardFrontImg.src = card.url;
 
-  // Reset card state
   if (revealedCard) {
-    revealedCard.classList.remove('flipping', 'rare');
+    revealedCard.classList.remove('rare');
     if (card.rarity === 'rare') revealedCard.classList.add('rare');
 
     // Re-trigger enter animation
@@ -377,30 +417,18 @@ function showCard(index) {
     revealedCard.style.animation = '';
 
     if (cardHint) {
-      cardHint.textContent = 'Haz clic en la carta para voltearla';
-      cardHint.style.display = '';
+      if (index < currentPackCards.length - 1) {
+        cardHint.textContent = 'Haz clic en la carta para ver la siguiente';
+      } else {
+        cardHint.textContent = 'Haz clic para ver el resumen';
+      }
     }
 
-    // Click to flip, then click to go next
-    let flipped = false;
+    // Click to advance to next card
     const clickHandler = () => {
-      if (!flipped) {
-        // Flip card
-        revealedCard.classList.add('flipping');
-        flipped = true;
-        if (cardHint) {
-          if (index < currentPackCards.length - 1) {
-            cardHint.textContent = 'Haz clic para ver la siguiente carta';
-          } else {
-            cardHint.textContent = 'Haz clic para ver el resumen';
-          }
-        }
-      } else {
-        // Next card
-        revealedCard.removeEventListener('click', clickHandler);
-        currentCardIndex++;
-        showCard(currentCardIndex);
-      }
+      revealedCard.removeEventListener('click', clickHandler);
+      currentCardIndex++;
+      showCard(currentCardIndex);
     };
 
     // Remove previous listeners by replacing element
@@ -408,7 +436,7 @@ function showCard(index) {
     revealedCard.parentNode.replaceChild(newCard, revealedCard);
     newCard.id = 'revealedCard';
 
-    // Re-set image after cloning
+    // Set image on the new cloned element
     const newFrontImg = newCard.querySelector('#cardFrontImg');
     if (newFrontImg) newFrontImg.src = card.url;
 
@@ -435,13 +463,34 @@ function showSummary() {
   }
 }
 
+// Global references for drag handlers (set in setupOpeningEvents)
+let onMoveHandler = null;
+let onEndHandler = null;
+
 function closeCardOpening() {
   const overlay = document.getElementById('cardOpeningOverlay');
   if (overlay) {
     overlay.classList.remove('active');
     setTimeout(() => { overlay.innerHTML = ''; }, 500);
   }
+  // Reset all state for next opening
   openingState = 'pack';
+  currentPackCards = [];
+  currentCardIndex = 0;
+  cutProgress = 0;
+  isDragging = false;
+
+  // Remove any lingering document-level listeners
+  if (onMoveHandler) {
+    document.removeEventListener('mousemove', onMoveHandler);
+    document.removeEventListener('touchmove', onMoveHandler);
+  }
+  if (onEndHandler) {
+    document.removeEventListener('mouseup', onEndHandler);
+    document.removeEventListener('touchend', onEndHandler);
+  }
+  onMoveHandler = null;
+  onEndHandler = null;
 }
 
 // ============================================
@@ -458,10 +507,9 @@ function renderMysteryBox() {
   const mysteryCard = document.createElement('div');
   mysteryCard.className = 'mystery-box-card';
   mysteryCard.innerHTML = `
-    <span class="mystery-icon">🎁</span>
     <h3>Mystery Box</h3>
-    <p>Abre un sobre con 6 cartas aleatorias de Héroes Ascendentes. ¡Incluye al menos 1 carta rara!</p>
-    <div class="mystery-price">🪙 ${MYSTERY_BOX_COST} PokeCoins</div>
+    <p>Abre un sobre con 10 cartas aleatorias de Pokémon TCG. ¡Incluye al menos 2 cartas raras!</p>
+    <div class="mystery-price">${MYSTERY_BOX_COST} PokeCoins</div>
     <button class="mystery-buy-btn" data-cost="${MYSTERY_BOX_COST}" ${pokeCoins < MYSTERY_BOX_COST ? 'disabled' : ''}>
       ABRIR MYSTERY BOX
     </button>
