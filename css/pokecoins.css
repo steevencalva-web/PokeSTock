@@ -53,7 +53,7 @@
   min-width: 22px;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Bangers', cursive;
   z-index: 10;
 }
 
@@ -104,7 +104,7 @@
 
 .pokecoins-panel-header h2 {
   color: #fff;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Bangers', cursive;
   font-size: 1.2rem;
   margin: 0;
 }
@@ -139,7 +139,7 @@
   font-size: 2rem;
   font-weight: 900;
   color: #ffcb05;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Bangers', cursive;
 }
 
 .pokecoins-balance .balance-label {
@@ -172,7 +172,7 @@
 
 .rewards-title {
   color: #fff;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Bangers', cursive;
   font-size: 1rem;
   margin: 1rem 1.5rem 0.75rem;
 }
@@ -218,7 +218,7 @@
 
 .pokecoins-rewards h3 {
   color: #fff;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Bangers', cursive;
   font-size: 1rem;
   margin-bottom: 1rem;
 }
@@ -294,7 +294,7 @@
 
 .mystery-box-card h3 {
   color: #ffcb05;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Bangers', cursive;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
@@ -433,7 +433,7 @@
 
 .booster-pack-bg .pack-title {
   color: #ffcb05;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Bangers', cursive;
   font-size: 1rem;
   text-align: center;
   font-weight: 700;
@@ -650,7 +650,7 @@
 
 .card-summary h2 {
   color: #ffcb05;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Bangers', cursive;
   font-size: 1.5rem;
 }
 
