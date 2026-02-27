@@ -1021,11 +1021,48 @@ function setupPrivacyModal() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closePrivacyModal();
+      closeTermsModal();
       closeAuthModal();
       closeAccountModal();
       closeOrdersModal();
     }
   });
+}
+
+// ============================================
+// TERMS & CONDITIONS MODAL
+// ============================================
+
+function openTermsModal() {
+  const overlay = document.getElementById('termsOverlay');
+  const modal = document.getElementById('termsModal');
+  if (overlay) overlay.classList.add('active');
+  if (modal) modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTermsModal() {
+  const overlay = document.getElementById('termsOverlay');
+  const modal = document.getElementById('termsModal');
+  if (overlay) overlay.classList.remove('active');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function setupTermsModal() {
+  const overlay = document.getElementById('termsOverlay');
+  const closeBtn = document.getElementById('termsClose');
+  const termsLink = document.getElementById('termsLink');
+
+  if (termsLink) {
+    termsLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      openTermsModal();
+    });
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeTermsModal);
+  if (overlay) overlay.addEventListener('click', closeTermsModal);
 }
 
 // ============================================
@@ -1105,6 +1142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupCookieBanner();
   setupPrivacyModal();
+  setupTermsModal();
   setupHamburger();
   setupExpansionesDropdown();
 
